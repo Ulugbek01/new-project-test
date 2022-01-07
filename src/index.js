@@ -11,6 +11,7 @@ ReactDOM.render(
     <Student title="WebBrain" />
     <Student title="IT" />
     <Student title="Academy" />
+    <Student>Salom</Student>
   </React.StrictMode>,
   document.getElementById("root")
 );

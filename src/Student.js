@@ -5,7 +5,23 @@ class Student extends Component {
   }
 
   render() {
-    return <h1>{this.props.title}</h1>;
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "200px",
+          height: "200px",
+          borderRadius: "50%",
+          backgroundColor: "green",
+          color: "#fff",
+          fontSize: "24px",
+        }}
+      >
+        {this.props.children}
+      </div>
+    );
   }
 }
 
