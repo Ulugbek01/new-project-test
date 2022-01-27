@@ -42,9 +42,9 @@ class App2 extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        {/* <Navbar />
         <Body users={this.state.users} usersCount={this.state.users.length} />
-        <Footer />
+        <Footer /> */}
       </div>
     );
   }
