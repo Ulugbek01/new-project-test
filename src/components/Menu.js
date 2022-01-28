@@ -25,6 +25,13 @@ class Menu extends Component {
       this.setState({ users: newData });
     };
 
+    const onSearch = (e) => {
+      let newData1 = this.state.users.filter((value) =>
+        value.name.includes(e.target.value)
+      );
+      this.setState({ users: newData1 });
+      console.log(newData1);
+    };
     // const getSurname = (e) => {
     //   this.setState({ surname: e.target.value });
     // };
@@ -32,7 +39,25 @@ class Menu extends Component {
     return (
       <div>
         <div className="container">
-          {this.state.users.map(({ id, title }) => (
+          <input placeholder="search item" onChange={onSearch} />
+          <select>
+            <option>Name</option>
+            <option>Surname</option>
+            <option>Status</option>
+            <option></option>
+            <option></option>
+          </select>
+          <div>
+            {this.state.users.map((value) => (
+              <div className="container-items">
+                <h3>
+                  {value.name} {value.surname}
+                  {value.id}
+                </h3>
+              </div>
+            ))}
+          </div>
+          {/* {this.state.users.map(({ id, title }) => (
             <div
               key={id}
               className={`nav-item nav-item__${id === this.state.active}`}
@@ -41,16 +66,16 @@ class Menu extends Component {
               {title}
               <button onClick={() => onDelete(id)}>{id}</button>
             </div>
-          ))}
+          ))} */}
         </div>
         <hr />
-        <div>
+        {/* <div>
           <h2>State</h2>
           <h3>Name: {this.state.name}</h3>
           <h3>Surname: {this.state.surname}</h3>
           <input name="name" placeholder="name" onChange={getName} />
           <input name="surname" placeholder="surname" onChange={getName} />
-        </div>
+        </div> */}
       </div>
     );
   }
