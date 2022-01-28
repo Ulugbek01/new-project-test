@@ -27,10 +27,12 @@ class Menu extends Component {
 
     const onSearch = (e) => {
       let newData1 = this.state.users.filter((value) =>
+        // Object.keys(value).entries(e.target.value.toLowerCase())
         value.name.includes(e.target.value)
       );
       this.setState({ users: newData1 });
-      console.log(newData1);
+      // console.log(e.target.value);
+      // console.log(newData1);
     };
     // const getSurname = (e) => {
     //   this.setState({ surname: e.target.value });
@@ -40,23 +42,25 @@ class Menu extends Component {
       <div>
         <div className="container">
           <input placeholder="search item" onChange={onSearch} />
-          <select>
+          <select onChange={onSearch}>
             <option>Name</option>
             <option>Surname</option>
             <option>Status</option>
-            <option></option>
-            <option></option>
           </select>
-          <div>
-            {this.state.users.map((value) => (
-              <div className="container-items">
-                <h3>
-                  {value.name} {value.surname}
-                  {value.id}
-                </h3>
-              </div>
-            ))}
-          </div>
+          {this.state.users.length ? (
+            <div>
+              {this.state.users.map((value) => (
+                <div className="container-items" key={value.id}>
+                  <h3>
+                    {value.name} {value.surname}
+                    {value.id}
+                  </h3>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div>No Data</div>
+          )}
           {/* {this.state.users.map(({ id, title }) => (
             <div
               key={id}
