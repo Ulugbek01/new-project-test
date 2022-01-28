@@ -47,7 +47,7 @@ class Menu extends Component {
             <option>Surname</option>
             <option>Status</option>
           </select>
-          {this.state.users.length ? (
+          {this.state.users.length > 0 ? (
             <div>
               {this.state.users.map((value) => (
                 <div className="container-items" key={value.id}>
