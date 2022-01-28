@@ -16,8 +16,13 @@ class Menu extends Component {
     };
 
     const getName = (e) => {
-    //   console.log(e.target.name);
-      this.setState({[e.target.name]: e.target.value });
+      //   console.log(e.target.name);
+      this.setState({ [e.target.name]: e.target.value });
+    };
+
+    const onDelete = (id) => {
+      let newData = this.state.users.filter((value) => value.id !== id);
+      this.setState({ users: newData });
     };
 
     // const getSurname = (e) => {
@@ -34,6 +39,7 @@ class Menu extends Component {
               onClick={() => onActive(id)}
             >
               {title}
+              <button onClick={() => onDelete(id)}>{id}</button>
             </div>
           ))}
         </div>
@@ -51,3 +57,9 @@ class Menu extends Component {
 }
 
 export default Menu;
+
+// let obj = {
+//   name: "Body.js",
+// };
+// console.log(obj['name']);
+// console.log(obj.name);
