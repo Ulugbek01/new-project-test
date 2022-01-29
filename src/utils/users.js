@@ -3,7 +3,7 @@ export const list = [
     id: 1,
     // icon: User,
     title: "Home",
-    name: "Abdumutal",
+    name: "Ahrorbek",
     surname: "Berdiyev",
   },
   {
