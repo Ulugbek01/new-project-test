@@ -4,6 +4,7 @@ import { list } from '../../utils/users';
 import { Container } from './style';
 export default class index extends Component {
     state = {
+        active: null,
         users: list,
         name:'',
         surname: '',
@@ -16,19 +17,28 @@ export default class index extends Component {
         }
       
       const onChange = (e)=> {
-        // console.log(e.target.value);
+        console.log(e.target.value);
         this.setState({[e.target.name]: e.target.value});
       }
       
       const onAdd = ()=> {
-        let newUser = {
-          id: this.state.users.length + 1,
-          title: this.state.title,
-          name: this.state.name,
-          surname: this.state.surname
+        if(!(this.state.name && this.state.surname && this.state.title)){
+          alert('Iltimos malumot kiriting');
         }
-        // console.log(newUser);
-        this.setState({users: [...this.state.users, newUser]});
+        else {
+          let newUser = {
+            id: this.state.users.length + 1,
+            title: this.state.title,
+            name: this.state.name,
+            surname: this.state.surname
+          }
+          this.setState({users: [...this.state.users, newUser]});
+        }
+        console.log(this.state.users);
+      }
+
+      const onEdit = (id)=> {
+        console.log(id);
       }
     return (
         <Container>
@@ -43,7 +53,7 @@ export default class index extends Component {
             </div>
             {this.state.users.length > 0 ?
                 this.state.users.map((value)=> 
-                    <CardItem value={value} key={value.id} onDelete={onDelete}/>
+                    <CardItem value={value} key={value.id} onDelete={onDelete} onEdit={onEdit}/>
                 ) : <h1>No data</h1>}
         </Container>
     )
