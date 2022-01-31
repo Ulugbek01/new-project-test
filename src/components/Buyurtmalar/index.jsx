@@ -3,14 +3,18 @@ export default class index extends Component {
   constructor() {
     super();
     this.state = {
-      conunt: 1,
+      count: 1,
     }
   }
   render() {
+    const Inc = ()=> {
+      this.setState({count: this.state.count+=1});
+    }
+
     return (<div>
-        <p>{this.state.conunt}</p>
-        <button>Click me</button>
-        <h2>Buyurtmalar</h2>
+        {/* <p>React Class Components</p> 
+        <p>{this.state.count}</p>
+        <button onClick={Inc}>Click me</button> */}
       </div>);
   }
 }
