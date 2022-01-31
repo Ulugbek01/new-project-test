@@ -9,15 +9,17 @@ const Hooks = ()=> {
     const [tel, setTel] = useState('');
 
     const getName =({target})=> {
-        console.log(target.value);
-        setName(target.value);
+        // console.log(target.name);
+        setName(
+            target.value
+          );  
     }
     const getLocation =({target})=> {
-        console.log(target.value);
+        // console.log(target.value);
         setLocation(target.value);
     }
     const getTel =({target})=> {
-        console.log(target.value);
+        // console.log(target.value);
         setTel(target.value);
     }
     const Add = ()=> {
