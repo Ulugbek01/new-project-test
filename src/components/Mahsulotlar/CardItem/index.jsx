@@ -5,6 +5,8 @@ export default class index extends Component {
   render() {
     const {id, name, surname, title} = this.props.value;
     const {onDelete, onEdit} = this.props;
+    // console.log(this.props.active);
+  
     return(
         <Container>
             <ItemContainer>
@@ -12,7 +14,10 @@ export default class index extends Component {
                 <ItemContainer.Title>{name}</ItemContainer.Title>
                 <ItemContainer.Title>{surname}</ItemContainer.Title>
                 <ItemContainer.Title>{title}</ItemContainer.Title>
-                <button className='btn' onClick={()=> onEdit(id)}>edit</button>
+                {this.props.active ? 
+                  <button className='btn'>save</button>
+                  :<button className='btn' onClick={()=> onEdit({id, name, surname, title})}>edit</button>
+                }
                 <button className='btn' onClick={()=>onDelete(id)}>delete</button>
             </ItemContainer>
         </Container>

@@ -34,11 +34,33 @@ export default class index extends Component {
           }
           this.setState({users: [...this.state.users, newUser]});
         }
-        console.log(this.state.users);
+        this.setState({
+          id: null,
+          name:'',
+          surname:'',
+          title:'',
+        })
+        // console.log(this.state.users);
       }
 
-      const onEdit = (id)=> {
-        console.log(id);
+      const onEdit = (value)=> {
+        this.setState({
+          active: value.id,
+          name: value.name,
+          surname: value.surname,
+          title: value.title,
+        });
+      }
+
+      const onSave = ()=>{
+        console.log(this.state.users);
+        this.setState({
+          // id: id,
+          // name: this.state.name,
+          // surname: this.state.surname,
+          // title: this.state.title,
+          // users: this.state.users,
+        });
       }
     return (
         <Container>
@@ -46,14 +68,15 @@ export default class index extends Component {
               <h3>Name: {this.state.name}</h3>
               <h3>Surname: {this.state.surname}</h3>
               <h3>Title: {this.state.title}</h3>
-              <input name='name' onChange={onChange} className='input' type="text" placeholder='name' />
-              <input name='surname' onChange={onChange} className='input' type="text" placeholder='surname' />
-              <input name='title' onChange={onChange} className='input' type="text" placeholder='title' />
+              <input value={this.state.name} name='name' onChange={onChange} className='input' type="text" placeholder='name' />
+              <input value={this.state.surname} name='surname' onChange={onChange} className='input' type="text" placeholder='surname' />
+              <input value={this.state.title} name='title' onChange={onChange} className='input' type="text" placeholder='title' />
+              <button onClick={onSave}>save</button>
               <button className='add-btn' onClick={onAdd}>add</button>
             </div>
             {this.state.users.length > 0 ?
                 this.state.users.map((value)=> 
-                    <CardItem value={value} key={value.id} onDelete={onDelete} onEdit={onEdit}/>
+                    <CardItem value={value} key={value.id} onDelete={onDelete} onEdit={onEdit} active={this.state.active === value.id}/>
                 ) : <h1>No data</h1>}
         </Container>
     )

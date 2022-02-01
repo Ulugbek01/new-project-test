@@ -25,3 +25,5 @@ export const Mijozlar = () => {
     </div>
   )
 };
+
+
