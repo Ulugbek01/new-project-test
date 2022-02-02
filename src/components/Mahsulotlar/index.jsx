@@ -43,17 +43,35 @@ export default class index extends Component {
         // console.log(this.state.users);
       }
 
-      const onEdit = (value)=> {
+      const onEdit = ()=> {
+        if(!this.state.active){  
+            let newUser1 = {
+              id: this.state.users.length + 1,
+              title: this.state.title,
+              name: this.state.name,
+              surname: this.state.surname
+          }
+          this.setState({users: [...this.state.users, newUser1]})
+        }
+        else {
+          let newUser1 = {
+            title: this.state.title,
+            name: this.state.name,
+            surname: this.state.surname
+          }
+          let user = this.state.users.map((value)=> value.id === this.state.active ? {...value, ...newUser1} : value);
+          this.setState({users: user});
+        }
         this.setState({
-          active: value.id,
-          name: value.name,
-          surname: value.surname,
-          title: value.title,
-        });
+          id: null,
+          name:'',
+          surname:'',
+          title:'',
+        })
       }
 
       const onSave = ()=>{
-        console.log(this.state.users);
+        // console.log(this.state.users);
         this.setState({
           // id: id,
           // name: this.state.name,
