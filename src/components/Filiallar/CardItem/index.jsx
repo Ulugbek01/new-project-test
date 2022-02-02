@@ -3,6 +3,7 @@ import { CardItemContainer, CardItemWrapper } from './style';
 
 export const CardItem = (props) => {
     const {id, title, name, surname} = props.value;
+    // console.log(props.active)
   return (
       <CardItemContainer>
           <CardItemWrapper>
@@ -11,7 +12,10 @@ export const CardItem = (props) => {
             <div>{name}</div>
             <div>{surname}</div>
             <button>delete</button>
-            <button>edit</button>
+            {props.active ? 
+                <button onClick={()=>props.onSave(id)}>save</button>:
+                <button onClick={()=>props.onEdit({id, title, name, surname})}>edit</button>
+            }
           </CardItemWrapper>
       </CardItemContainer>
   )

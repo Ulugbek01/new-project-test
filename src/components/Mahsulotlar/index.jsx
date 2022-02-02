@@ -43,25 +43,32 @@ export default class index extends Component {
         // console.log(this.state.users);
       }
 
-      const onEdit = ()=> {
-        if(!this.state.active){  
-            let newUser1 = {
-              id: this.state.users.length + 1,
-              title: this.state.title,
-              name: this.state.name,
-              surname: this.state.surname
-          }
-          this.setState({users: [...this.state.users, newUser1]})
-        }
-        else {
-          let newUser1 = {
+       /*  Edit qiladigan function boshlandi  */
+
+      const onSave = ()=>{
+        // console.log(this.state.active);
+        if(!this.state.active){
+          let newUser = {
+            id: this.state.users.length + 1,
             title: this.state.title,
             name: this.state.name,
             surname: this.state.surname
           }
-          let user = this.state.users.map((value)=> value.id === this.state.active ? {...value, ...newUser1} : value);
+          this.setState({users: [...this.state.users, newUser]});
+        }
+        else{
+          let newUser = {
+            title: this.state.title,
+            name: this.state.name,
+            surname: this.state.surname
+          }
+
+          let user = this.state.users.map((value)=> value.id === this.state.active 
+          ? {...this.state.users, ...newUser}: value);
+          console.log({...this.state.users})
           this.setState({users: user});
         }
+
         this.setState({
           id: null,
           name:'',
@@ -69,17 +76,19 @@ export default class index extends Component {
           title:'',
         })
       }
+      /* Edit qiladigan fuction tugadi */
 
-      const onSave = ()=>{
-        // console.log(this.state.users);
+      const onEdit = (value)=> {
         this.setState({
-          // id: id,
-          // name: this.state.name,
-          // surname: this.state.surname,
-          // title: this.state.title,
-          // users: this.state.users,
-        });
+          active:value.id,
+          name: value.name,
+          surname: value.surname,
+          title: value.title,
+        })
+
+        console.log();
       }
+
     return (
         <Container>
             <div>
@@ -90,7 +99,7 @@ export default class index extends Component {
               <input value={this.state.surname} name='surname' onChange={onChange} className='input' type="text" placeholder='surname' />
               <input value={this.state.title} name='title' onChange={onChange} className='input' type="text" placeholder='title' />
               <button onClick={onSave}>save</button>
-              <button className='add-btn' onClick={onAdd}>add</button>
+              <button className='add-btn' onClick={onEdit}>add</button>
             </div>
             {this.state.users.length > 0 ?
                 this.state.users.map((value)=> 
