@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
+import { SwitchContainer, Switch1, Switch2 } from './style';
 export default class index extends Component {
   constructor() {
     super();
     this.state = {
-      count: 1,
+      active: true,
+      id: '000',
     }
   }
   render() {
-    const Inc = ()=> {
-      this.setState({count: this.state.count+=1});
+    const onActive = () =>{
+      this.setState({active: !this.state.active});
+      console.log(this.state.active);
     }
-
-    return (<div>
-        {/* <p>React Class Components</p> 
-        <p>{this.state.count}</p>
-        <button onClick={Inc}>Click me</button> */}
-      </div>);
+    return (
+      <SwitchContainer>
+        <Switch1 onClick={onActive} a={this.state.active}></Switch1>
+        <Switch2 onClick={onActive} a={this.state.active}></Switch2>
+        {/* <span onClick={onActive}></span> */}
+        {this.state.active}
+      </SwitchContainer>
+    );
   }
 }
