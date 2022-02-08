@@ -4,6 +4,7 @@ import Mahsulotlar from "./components/Mahsulotlar";
 import Xodimlar from "./components/Xodimlar";
 import { Mijozlar } from "./components/Mijozlar";
 import { Filiallar } from "./components/Filiallar";
+import { MyTest } from "./components/MyTest";
 export default class App extends Component {
   render() {
     return (
@@ -13,6 +14,7 @@ export default class App extends Component {
         <Mahsulotlar />
         <Mijozlar />
         <Filiallar />
+        <MyTest />
       </div>
     );
   }
