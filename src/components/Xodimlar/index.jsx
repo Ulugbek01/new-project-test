@@ -3,7 +3,11 @@ import { students } from "../../utils/students";
 import { Container, UsersCard } from "./style";
 import { useLocation } from "react-router-dom";
 
-const Hooks = ()=> {
+const Xodimlar = ()=> {
+    const {pathname, state, hash} = useLocation();
+    console.log(pathname);
+    console.log(state);
+    console.log('----------------->');
 
     const [count, setCount] = useState(students);
     const [name, setName] = useState('');
@@ -62,4 +66,4 @@ const Hooks = ()=> {
     )
 }
 
-export default Hooks;
+export default Xodimlar;

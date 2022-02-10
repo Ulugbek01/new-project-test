@@ -43,6 +43,11 @@ ReactDOM.render(
         </NavLink>
 
         <NavLink
+          state={{
+            name: "Bekhzod",
+            surname: "Mukhammadiyev",
+            age: 23,
+          }}
           style={({ isActive }) => {
             return {
               color: isActive ? "red" : "black",
@@ -51,11 +56,16 @@ ReactDOM.render(
             };
           }}
           className="nav-link"
-          to={"/xodimalar"}
+          to={"/xodimlar"}
         >
           Xodimlar
         </NavLink>
         <NavLink
+          state={{
+            name: "ulugbek",
+            age: 23,
+            location: "Bakhmal",
+          }}
           style={({ isActive }) => {
             return {
               color: isActive ? "red" : "black",
@@ -75,6 +85,7 @@ ReactDOM.render(
         <Route path="/xodimlar" element={<Xodimlar />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
+      {/* <Xodimlar /> */}
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
