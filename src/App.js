@@ -7,10 +7,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <NavLink to={"/Buyurtmalar"}>Buyurtmalar</NavLink>
-        <NavLink to={"/Mahsulotlar"}>Mahsulotlar</NavLink>
-        <NavLink to={"/Xodimlar"}>Xodimlar</NavLink>
-        <NavLink to={"/Mijozlar"}>Mijozlar</NavLink>
+        App Component
       </div>
     );
   }

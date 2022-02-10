@@ -1,7 +1,11 @@
 import React,{useState} from 'react';
 import { students } from '../../utils/students';
+import { useNavigate } from 'react-router-dom';
 
 export const MyTest = () => {
+    // const location = useLocation();
+    // console.log(location);
+
     const [lists, setLists] = useState(students);
     const [location, setLocation] = useState('');
     const [name, setName] = useState('');
@@ -45,8 +49,20 @@ export const MyTest = () => {
         //     tel: ''
         // }
     }
+
+    const navigate = useNavigate();
+    console.log(navigate);
+
+    // const location = useLocation();
+    // console.log(location);
   return (
       <div style={{marginTop: '40px', backgroundColor:'bisque'}}>
+          <button onClick={()=> navigate('/')}>go to home</button>
+          <br />
+          <button onClick={()=>navigate(-2)}>{"<<"}</button>
+          <button onClick={()=>navigate(-1)}>{"<"}</button>
+          <button onClick={()=>navigate(+1)}>{">"}</button>
+          <button onClick={()=>navigate(+2)}>{">>"}</button>
           <input type="text" onChange={getLocation} placeholder='location'/>
           <input type="text" onChange={getName} placeholder='name'/>
           <input type="tel" onChange={getTel} placeholder='tel'/>
